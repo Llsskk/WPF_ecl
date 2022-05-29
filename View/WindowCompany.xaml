@@ -1,0 +1,74 @@
+﻿<Window x:Class="ecl.View.WindowCompany"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ecl.View"
+        mc:Ignorable="d"
+        Title="Организация" Height="350" Width="450">
+    <Grid>
+        <StackPanel Orientation="Vertical" Height="300" Margin="0,8,0,0" Grid.Row="1" Grid.RowSpan="3">
+            <TextBlock Text="Клиент" Width="50"/>
+            <ComboBox
+                SelectedValue="{Binding Path=PersonId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                SelectedValuePath="Id" Width="210">
+
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBlock Text="{Binding Path=Type}" />
+                            <TextBlock Text="  "  />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <TextBlock Text="Орган регистрации" Width="108"/>
+            <ComboBox
+                SelectedValue="{Binding Path=OrgRegistrationId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                SelectedValuePath="Id" Width="210">
+
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBlock Text="{Binding Path=NameShort}" />
+                            <TextBlock Text="  "  />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+
+            <TextBlock Text="Организационно-правовая форма" Width="194"/>
+            <ComboBox
+                SelectedValue="{Binding Path=OrgLegFormId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                SelectedValuePath="Id" Width="250">
+
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBlock Text="{Binding Path=NameFull}" />
+                            <TextBlock Text="  "  />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+
+
+            <TextBlock Width="210" Text="Полное наименование организации"/>
+            <TextBox Width="270" x:Name="tbNameFullCompany" />
+            <TextBlock Width="210" Text="Краткое наименование организации"/>
+            <TextBox Width="210" x:Name="tbNameShortCompany" />
+            <TextBlock Width="210" Text="Номер регистрации юр. лица"/>
+            <TextBox Width="210" x:Name="tbNumberReg" />
+            <TextBlock Width="150" Text="Дата регистрации юр. лица"/>
+            <DatePicker Width="125" x:Name="tbDataReg" />
+           
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="btOK" Content="Подтвердить " Height="30" Click="btOK_Click" IsDefault="True" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

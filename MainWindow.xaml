@@ -1,0 +1,138 @@
+﻿<Window x:Class="ecl.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ecl"
+        mc:Ignorable="d"
+      Title="MainWindow" Height="450" Width="900">
+    <TabControl Margin="5">
+        <TabItem Header="Компании">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="btLoad" Content="Загрузить" Click="btLoad_Click" Margin="5,5,10,5" />
+                    <Button x:Name="btAdd" Content="Добавить" Click="btAdd_Click" Margin="5,5,10,5" />
+                    <Button x:Name="btEdit" Content="Редактировать" Click="btEdit_Click" Margin="5,5,10,5" />
+                    <Button x:Name="btDelete" Content="Удалить" Click="btDelete_Click" Margin="5,5,10,5" />
+                </StackPanel>
+                <StackPanel Height="15" Grid.Row="1">
+                    <ProgressBar  x:Name="ProgressBarAgreement" IsIndeterminate="True" Height="10" Width="200"
+                         VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Visibility="Collapsed"/>
+                </StackPanel>
+
+                <ListView x:Name="lvCompany" Margin="5" Grid.Row="2">
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Header="Клиент"  Width="150" DisplayMemberBinding="{Binding Path=Person.Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <GridViewColumn Header="Орган регистрации" Width="120" DisplayMemberBinding="{Binding Path=OrgRegistration.NameShort, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <GridViewColumn Header="ОПФ" Width="220" DisplayMemberBinding="{Binding Path=OrgLegForm.NameFull, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <GridViewColumn Header="Полное наименование орг" Width="200" DisplayMemberBinding="{Binding Path=NameFull, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <GridViewColumn Header="Краткое наименование орг" Width="190" DisplayMemberBinding="{Binding Path=NameShort, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <GridViewColumn Header="Номер регистрации юр. лица" Width="190" DisplayMemberBinding="{Binding Path=NumberReg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <GridViewColumn Header="Дата регистрации юр. лица" Width="220" DisplayMemberBinding="{Binding Path=DataReg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Клиенты">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="btLoadPer" Content="Загрузить" Click="btLoadPer_Click" Margin="5,5,10,5" />
+                    <Button x:Name="btAddPer" Content="Добавить" Click="btAddPer_Click" Margin="5,5,10,5" />
+                    <Button x:Name="btEditPer" Content="Редактировать" Click="btEditPer_Click" Margin="5,5,10,5" />
+                    <Button x:Name="btDeletePer" Content="Удалить" Click="btDeletePer_Click" Margin="5,5,10,5" />
+                </StackPanel>
+                <StackPanel Height="15" Grid.Row="1">
+                    <ProgressBar  x:Name="ProgressBarPerson" IsIndeterminate="True" Height="10" Width="200"
+                         VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Visibility="Collapsed"/>
+                </StackPanel>
+                <ListView x:Name="lvPerson" Margin="5" Grid.Row="2" >
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Header="Шифр клиента"  Width="120" DisplayMemberBinding="{Binding Path=Shifer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <GridViewColumn Header="Инн" Width="150" DisplayMemberBinding="{Binding Path=Inn, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                <GridViewColumn Header="Тип клиента" Width="220" DisplayMemberBinding="{Binding Path=Type, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                <GridViewColumn Header="Дата регистрации клиента" Width="150" DisplayMemberBinding="{Binding Path=Data, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+
+        </TabItem>
+
+        <TabItem Header="Орган регистрации">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="btLoadOR" Content="Загрузить" Click="btLoadOR_Click" Margin="5,5,10,5" />
+                    <Button x:Name="btAddOR" Content="Добавить" Click="btAddOR_Click" Margin="5,5,10,5" />
+                    <Button x:Name="btEditOR" Content="Редактировать" Click="btEditOR_Click" Margin="5,5,10,5" />
+                    <Button x:Name="btDeleteOR" Content="Удалить" Click="btDeleteOR_Click" Margin="5,5,10,5" />
+                </StackPanel>
+                <StackPanel Height="15" Grid.Row="1">
+                    <ProgressBar  x:Name="ProgressBarOrgRegistration" IsIndeterminate="True" Height="10" Width="200"
+                         VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Visibility="Collapsed"/>
+                </StackPanel>
+                <ListView x:Name="lvOrgRegistration" Margin="5" Grid.Row="2" >
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Header="Полное наименование органа регистрации"  Width="280" DisplayMemberBinding="{Binding Path=NameFull}"/>
+                                <GridViewColumn Header="Краткое наименование органа регистрации"  Width="280" DisplayMemberBinding="{Binding Path=NameShort}"/>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Тип договора">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="btLoadOLF" Content="Загрузить" Click="btLoadOLF_Click" Margin="5,5,10,5" />
+                    <Button x:Name="btAddOLF" Content="Добавить" Click="btAddOLF_Click" Margin="5,5,10,5" />
+                    <Button x:Name="btEditOLF" Content="Редактировать" Click="btEditOLF_Click" Margin="5,5,10,5" />
+                    <Button x:Name="btDeleteOLF" Content="Удалить" Click="btDeleteOLF_Click" Margin="5,5,10,5" />
+                </StackPanel>
+                <StackPanel Height="15" Grid.Row="1">
+                    <ProgressBar  x:Name="ProgressBarOrgLegForm" IsIndeterminate="True" Height="10" Width="200"
+                         VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Visibility="Collapsed"/>
+                </StackPanel>
+                <ListView x:Name="lvOrgLegForm" Margin="5" Grid.Row="2" >
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Header="Полное наименование ОПФ"  Width="250" DisplayMemberBinding="{Binding Path=NameFull}"/>
+                                <GridViewColumn Header="Краткое наименование ОПФ"  Width="200" DisplayMemberBinding="{Binding Path=NameShort}"/>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</Window>
+
